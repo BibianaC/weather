@@ -1,4 +1,4 @@
-import numpy
+from __future__ import division
 from pyowm import OWM
 
 from rest_framework.decorators import api_view
@@ -8,13 +8,23 @@ from settings import WEATHER_API_KEY
 
 
 def average(list_num):
-    avg = numpy.mean(list_num)
+    avg = sum(list_num) / len(list_num)
     return round(avg, 2)
 
 
 def median(list_num):
-    median = numpy.median(list_num)
-    return round(median, 2)
+    len_list = len(list_num)
+    if len_list == 1:
+        return list_num[0]
+
+    sorted_list = sorted(list_num)
+    mid_index = int(len_list/2)
+    mid_num = sorted_list[mid_index]
+    if len_list % 2 != 0:
+        return mid_num
+
+    minus_mid_num = sorted_list[mid_index - 1]
+    return round((minus_mid_num + mid_num)/2, 2)
 
 
 def temperature(day_temp):

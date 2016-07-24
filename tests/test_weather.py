@@ -27,9 +27,12 @@ def test_average():
 
 
 def test_median():
-    data = [18.75, 20.50, 27.01, 24.5, 26.03]
-    med = median(data)
-    assert(med) == 24.5
+    data_one = [18.75]
+    data_odd = [18.75, 20.50, 27.01, 24.5, 26.03]
+    data_even = [18.75, 20.50, 27.01, 24.5, 26.03, 31.5]
+    assert(median(data_one)) == 18.75
+    assert(median(data_odd)) == 24.5
+    assert(median(data_even)) == 25.27
 
 
 def test_temperature():
