@@ -1,4 +1,23 @@
-from weather.weather.views import aggreagate, average, median, temperature
+from weather.weather.views import (
+    aggreagate, average, daily_fcst_data, median, temperature)
+
+FORECAST = [
+    {
+        'day': '2016-07-24 18:00:00+00',
+        'temperature': {'max': 33.1, 'avg': 29.11, 'min': 25.12},
+        'humidity': 86
+    },
+    {
+        'day': '2016-07-25 18:00:00+00',
+        'temperature': {'max': 32.46, 'avg': 29.28, 'min': 26.1},
+        'humidity': 84
+    },
+    {
+        'day': '2016-07-26 18:00:00+00',
+        'temperature': {'max': 31.55, 'avg': 28.19, 'min': 24.83},
+        'humidity': 0
+    },
+]
 
 
 def test_average():
@@ -22,25 +41,16 @@ def test_temperature():
     assert(temp) == result
 
 
+def test_daily_fcst_data():
+    daily_min, daily_max, daily_avg, daily_humidity = daily_fcst_data(FORECAST)
+    assert(daily_min) == [25.12, 26.1, 24.83]
+    assert(daily_max) == [33.1, 32.46, 31.55]
+    assert(daily_avg) == [29.11, 29.28, 28.19]
+    assert(daily_humidity) == [86, 84, 0]
+
+
 def test_aggreagate():
-    forecast = [
-        {
-            'day': '2016-07-24 18:00:00+00',
-            'temperature': {'max': 33.1, 'avg': 29.11, 'min': 25.12},
-            'humidity': 86
-        },
-        {
-            'day': '2016-07-25 18:00:00+00',
-            'temperature': {'max': 32.46, 'avg': 29.28, 'min': 26.1},
-            'humidity': 84
-        },
-        {
-            'day': '2016-07-26 18:00:00+00',
-            'temperature': {'max': 31.55, 'avg': 28.19, 'min': 24.83},
-            'humidity': 0
-        },
-    ]
-    aggreagated = aggreagate(forecast)
+    aggreagated = aggreagate(FORECAST)
     result = {
         'min': 24.83,
         'max': 33.1,
