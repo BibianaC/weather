@@ -1,5 +1,5 @@
 from weather.weather.views import (
-    aggreagate, average, daily_fcst_data, median, temperature)
+    aggregate, average, daily_fcst_data, median, temperature)
 
 FORECAST = [
     {
@@ -50,7 +50,7 @@ def test_daily_fcst_data():
 
 
 def test_aggreagate():
-    aggreagated = aggreagate(FORECAST)
+    aggregated = aggregate(FORECAST)
     result = {
         'min': 24.83,
         'max': 33.1,
@@ -66,4 +66,4 @@ def test_aggreagate():
         'median_humidity': 84,
     }
 
-    assert(aggreagated) == result
+    assert(aggregated) == result

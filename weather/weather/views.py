@@ -64,7 +64,7 @@ def daily_fcst_data(forecast):
     return daily_min, daily_max, daily_avg, daily_humidity
 
 
-def aggreagate(forecast):
+def aggregate(forecast):
     daily_min, daily_max, daily_avg, daily_humidity = daily_fcst_data(forecast)
     aggregated = {
         'min': min(daily_min),
@@ -86,7 +86,7 @@ def aggreagate(forecast):
 
 def weather_info(location, days):
     forecast = get_forecast(location, days)
-    aggregated = aggreagate(forecast)
+    aggregated = aggregate(forecast)
     weather = {
         'daily_forecast': forecast,
         'aggregated': aggregated,
