@@ -5,5 +5,5 @@ from weather import urls as weather_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/v0/', include(weather_urls)),
+    url(r'^api/v0/weather/', include(weather_urls)),
 ]
