@@ -37,7 +37,6 @@ def forecast(forecast_data):
             'humidity': humidity,
             'temperature': temp,
         })
-
     return forecast
 
 
@@ -60,7 +59,6 @@ def daily_fcst_data(forecast):
         daily_max.append(temperature['max'])
         daily_avg.append(temperature['avg'])
         daily_humidity.append(info['humidity'])
-
     return daily_min, daily_max, daily_avg, daily_humidity
 
 
@@ -80,7 +78,6 @@ def aggregate(forecast):
         'avg_humidity': average(daily_humidity),
         'median_humidity': median(daily_humidity),
     }
-
     return aggregated
 
 
